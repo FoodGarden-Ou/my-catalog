@@ -1,0 +1,61 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: "Microsoft JhengHei", sans-serif; background: #fff; }
+.container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+.hero-section { width: 100%; height: 250px; background: #e0e0e0; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 10px; }
+.title-bar h1 { font-size: 24px; font-weight: normal; margin: 20px 0; }
+
+/* 導覽列 */
+.nav-container { display: flex; gap: 10px; margin-bottom: 30px; }
+.nav-item-wrapper { flex: 1; position: relative; }
+
+.nav-item {
+    background-color: #5da439;
+    color: white;
+    text-align: center;
+    padding: 12px 0;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.2s;
+}
+
+/* 下拉選單背景與間隙 */
+.menu-bg {
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    background-color: #D0E8D0;
+    padding: 8px;
+    z-index: 10;
+    margin-top: 5px;
+}
+.third { left: 100%; top: 0; margin-top: 0; margin-left: 5px; }
+
+.sub-item-group { position: relative; }
+.sub-item {
+    background-color: #5da439;
+    color: white;
+    text-align: center;
+    padding: 12px 0;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+.sub-item:last-child { margin-bottom: 0; }
+
+/* 互動樣式 */
+.nav-item:hover, .sub-item:hover { font-size: 20px; filter: brightness(1.05); }
+.active-item { background-color: #3e6d26 !important; font-size: 20px !important; font-weight: bold; }
+
+/* 右側內容排版修正 */
+.content-section { display: flex; gap: 80px; margin-top: 50px; align-items: flex-start; }
+.image-box { flex: 0 0 400px; height: 400px; background: #e0e0e0; border: 1px solid #333; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+
+.text-wrapper { flex: 1; padding-left: 30px; }
+.path-label { font-size: 16px; color: #333; margin: 0; }
+.path-data { font-size: 16px; color: #666; margin: 5px 0 20px 0; }
+.main-title { font-size: 48px; font-weight: bold; margin: 0 0 10px 0; }
+.green-line { width: 100%; border-bottom: 2px solid #5da439; margin-bottom: 25px; }
+.desc-title { font-size: 20px; font-weight: bold; margin-bottom: 10px; }
+.desc-text { font-size: 18px; line-height: 1.8; color: #333; }
