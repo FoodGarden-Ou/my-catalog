@@ -9,7 +9,7 @@
 <body>
 
     <header class="hero-section">
-        <div class="container hero-content">圖片 1</div>
+        <div class="hero-content">圖片 1</div>
     </header>
 
     <div class="container">
@@ -25,9 +25,12 @@
             <div class="nav-item-wrapper">
                 <div class="nav-item" id="menu-main" onclick="toggleMain()">目錄</div>
                 
-                <div class="menu-bg" id="submenu-abc" style="display: none;">
+                <div class="menu-outer-box" id="submenu-abc" style="display: none;">
                     <div class="menu-header">目錄</div>
-                    <div id="category-list"></div>
+                    <div class="menu-flex-container">
+                        <div id="category-list" class="category-column"></div>
+                        <div id="third-container" class="number-column"></div>
+                    </div>
                 </div>
             </div>
 
@@ -36,9 +39,7 @@
             </div>
         </nav>
 
-        <div id="third-container" class="third-container"></div>
-
-        <main class="content-section" id="main-content">
+        <main class="content-section">
             <div id="intro-view">
                 <h3>介紹：</h3>
                 <p>. . . . . .</p>
