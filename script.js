@@ -1,91 +1,40 @@
-// 請確保這是你最新的 GAS 網址
-const gasUrl = "https://script.google.com/macros/s/AKfycbzoRn5kCz1DSvFKqDhCJJinZRdIKtMEw-4Ns7nHZ6f5sccKr7t-IyhAk7Erdpq3n8Rd/exec";
-let contentData = {};
+/* 基本設定 */
+body { font-family: "Microsoft JhengHei", sans-serif; margin: 0; padding: 0; background-color: #fff; }
+.container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 
-// 初始化
-async function initData() {
-    try {
-        const response = await fetch(`${gasUrl}?t=${new Date().getTime()}`);
-        contentData = await response.json();
-        renderDynamicMenus();
-    } catch (e) {
-        console.error("資料加載失敗", e);
-    }
+.hero-section { background: #ddd; height: 200px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px; }
+
+/* 導覽列 */
+.nav-container { display: flex; gap: 5px; margin-bottom: 20px; }
+.nav-item-wrapper { flex: 1; position: relative; }
+.nav-item { 
+    background: #55a630; color: white; padding: 15px; 
+    text-align: center; cursor: pointer; font-size: 18px; font-weight: bold; 
 }
+.nav-item:hover { background: #386621; }
 
-// 繪製選單
-function renderDynamicMenus() {
-    const categoryList = document.getElementById('category-list');
-    const thirdContainer = document.getElementById('third-container');
-    if (!categoryList || !thirdContainer) return;
-
-    // 取得分類 (A, B, C)
-    const categories = [...new Set(Object.values(contentData).map(item => item.category))].sort();
-    
-    // 生成左側按鈕
-    categoryList.innerHTML = categories.map(cat => 
-        `<div class="category-btn" onclick="toggleSub(this, 'sub-${cat}')">${cat}</div>`
-    ).join('');
-
-    // 生成右側數字組 (預設隱藏)
-    let thirdHtml = '';
-    categories.forEach(cat => {
-        thirdHtml += `<div id="sub-${cat}" class="third-group">`;
-        const ids = Object.keys(contentData).filter(id => contentData[id].category === cat);
-        ids.forEach(id => {
-            thirdHtml += `<div class="number-btn" onclick="changeContent('${id}')">${id}</div>`;
-        });
-        thirdHtml += `</div>`;
-    });
-    thirdContainer.innerHTML = thirdHtml;
+/* 雙欄目錄樣式 */
+.menu-outer-box {
+    position: absolute; top: 100%; left: 0; width: 450px; 
+    background: white; z-index: 1000; border: 4px solid #d9ebd3;
 }
+.menu-header { background: #386621; color: white; text-align: center; padding: 8px; font-size: 22px; }
+.menu-flex-container { display: flex; background: #d9ebd3; padding: 10px; gap: 10px; }
 
-// 點擊 A, B, C 切換右側顯示
-function toggleSub(el, subId) {
-    // 隱藏所有數字組
-    document.querySelectorAll('.third-group').forEach(g => g.style.display = 'none');
-    // 顯示對應的數字組
-    const target = document.getElementById(subId);
-    if (target) target.style.display = 'flex';
+.category-column, .number-column { flex: 1; display: flex; flex-direction: column; gap: 8px; }
 
-    // 改變按鈕高亮
-    document.querySelectorAll('.category-btn').forEach(btn => btn.style.background = '#55a630');
-    el.style.background = '#386621';
+/* 按鈕樣式 */
+.category-btn, .number-btn {
+    background: #55a630; color: white; padding: 12px; 
+    text-align: center; cursor: pointer; font-size: 18px; transition: 0.2s;
 }
+.category-btn:hover, .number-btn:hover { background: #386621; }
 
-// 點擊數字 (1, 2, 3) 更新內容
-function changeContent(id) {
-    const data = contentData[id];
-    if (!data) return;
+/* 隱藏/顯示邏輯 */
+.third-group { display: none; flex-direction: column; gap: 8px; }
 
-    document.getElementById('intro-view').style.display = 'none';
-    document.getElementById('detail-view').style.display = 'block';
-    
-    document.getElementById('dynamic-content').innerHTML = `
-        <p style="color: #888;">路徑：目錄 / ${data.category} / ${data.title}</p>
-        <h1 style="margin: 10px 0;">${data.title}</h1>
-        <div style="width: 100%; height: 2px; background: #aacc00; margin-bottom: 20px;"></div>
-        <p><strong>說明：</strong></p>
-        <p style="line-height: 1.6;">${data.desc.replace(/\n/g, '<br>')}</p>
-    `;
-
-    const imageBox = document.querySelector('.image-box');
-    imageBox.innerHTML = data.imgUrl ? `<img src="${data.imgUrl}">` : '暫無圖片';
-
-    // 關閉選單
-    document.getElementById('submenu-abc').style.display = 'none';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function toggleMain() {
-    const menu = document.getElementById('submenu-abc');
-    menu.style.display = (menu.style.display === 'none') ? 'block' : 'none';
-}
-
-function showIntro() {
-    document.getElementById('intro-view').style.display = 'block';
-    document.getElementById('detail-view').style.display = 'none';
-    document.getElementById('submenu-abc').style.display = 'none';
-}
-
-initData();
+/* 內容區佈局 */
+.layout-wrapper { display: flex; gap: 30px; margin-top: 30px; border-left: 5px solid #d9ebd3; padding-left: 20px; }
+.image-box { flex: 0 0 300px; height: 300px; background: #eee; display: flex; align-items: center; justify-content: center; border: 1px solid #ccc; }
+.image-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.text-wrapper { flex: 1; }
