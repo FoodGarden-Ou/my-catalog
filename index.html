@@ -25,7 +25,10 @@
             <div class="nav-item-wrapper">
                 <div class="nav-item" id="menu-main" onclick="toggleMain()">目錄</div>
                 
-                <div class="menu-bg" id="submenu-abc" style="display: none;"></div>
+                <div class="menu-bg" id="submenu-abc" style="display: none;">
+                    <div class="menu-header">目錄</div>
+                    <div id="category-list"></div>
+                </div>
             </div>
 
             <div class="nav-item-wrapper">
@@ -33,7 +36,7 @@
             </div>
         </nav>
 
-        <div class="third-container"></div>
+        <div id="third-container" class="third-container"></div>
 
         <main class="content-section" id="main-content">
             <div id="intro-view">
@@ -42,9 +45,10 @@
             </div>
 
             <div id="detail-view" style="display: none;">
-                <div class="image-box">圖片 2</div>
-                <div class="text-wrapper" id="dynamic-content">
-                    </div>
+                <div class="layout-wrapper">
+                    <div class="image-box">圖片 2</div>
+                    <div class="text-wrapper" id="dynamic-content"></div>
+                </div>
             </div>
         </main>
     </div>
