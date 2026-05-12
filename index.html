@@ -25,41 +25,15 @@
             <div class="nav-item-wrapper">
                 <div class="nav-item" id="menu-main" onclick="toggleMain()">目錄</div>
                 
-                <div class="menu-bg" id="submenu-abc">
-                    
-                    <div class="sub-item-group">
-                        <div class="sub-item" onclick="toggleSub(this, 'sub-A')">A</div>
-                        <div class="menu-bg third" id="sub-A">
-                            <div class="sub-item" onclick="changeContent('4', this)">4</div>
-                            <div class="sub-item" onclick="changeContent('5', this)">5</div>
-                            <div class="sub-item" onclick="changeContent('6', this)">6</div>
-                        </div>
-                    </div>
-
-                    <div class="sub-item-group">
-                        <div class="sub-item" onclick="toggleSub(this, 'sub-B')">B</div>
-                        <div class="menu-bg third" id="sub-B">
-                            <div class="sub-item" onclick="changeContent('1', this)">1</div>
-                            <div class="sub-item" onclick="changeContent('2', this)">2</div>
-                            <div class="sub-item" onclick="changeContent('3', this)">3</div>
-                        </div>
-                    </div>
-
-                    <div class="sub-item-group">
-                        <div class="sub-item" onclick="toggleSub(this, 'sub-C')">C</div>
-                        <div class="menu-bg third" id="sub-C">
-                            <div class="sub-item" onclick="changeContent('7', this)">7</div>
-                            <div class="sub-item" onclick="changeContent('8', this)">8</div>
-                            <div class="sub-item" onclick="changeContent('9', this)">9</div>
-                        </div>
-                    </div>
-                </div>
+                <div class="menu-bg" id="submenu-abc" style="display: none;"></div>
             </div>
 
             <div class="nav-item-wrapper">
                 <div class="nav-item">聯絡我們</div>
             </div>
         </nav>
+
+        <div class="third-container"></div>
 
         <main class="content-section" id="main-content">
             <div id="intro-view">
