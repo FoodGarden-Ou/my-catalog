@@ -1,26 +1,49 @@
-/* 基礎設定 */
-body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-
-/* 導覽列排版 */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 50px;
-    background: #f0f0f0;
-    border-bottom: 1px solid #ddd;
+/* --- 導覽列連結基本顏色 --- */
+.nav-links a {
+    text-decoration: none;
+    color: #000000; /* 預設黑色 */
+    font-size: 18px;
+    transition: 0.3s; /* 讓顏色變換平滑一點 */
 }
 
-nav ul { display: flex; list-style: none; padding: 0; }
-nav li { margin-left: 20px; }
-nav a { text-decoration: none; color: #333; }
+/* --- 【重點】滑動或點擊後的顏色修改處 --- */
+.nav-links a:hover, 
+.nav-links .dropdown:hover .dropbtn {
+    color: #3B7D23 !important; /* <--- 在這裡修改你想要的顏色 */
+}
 
-/* 圖片區塊模擬 */
-.hero-banner {
-    height: 300px;
-    background: #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 40px;
+/* --- 下拉選單容器設定 --- */
+.dropdown {
+    position: relative; /* 讓下拉選單相對於「產品」對齊 */
+}
+
+.dropdown-content {
+    display: none; /* 預設隱藏 */
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* 陰影效果 */
+    z-index: 1;
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+    border: 1px solid #ddd;
+}
+
+/* 當鼠標移到「產品」上時，顯示下拉選單 */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* 下拉選單內的每一項 */
+.dropdown-content li a {
+    color: black;
+    padding: 12px 16px;
+    display: block;
+    font-size: 16px;
+}
+
+.dropdown-content li a:hover {
+    background-color: #f1f1f1;
+    color: #3B7D23 !important; /* 下拉選項滑過也變色 */
 }
