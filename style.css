@@ -1,11 +1,11 @@
 /* ==========================================================================
-   1. 基礎重置 (Reset) - 徹底消除黑點點與預設邊距
+   1. 基礎重置 - 徹底消除黑點點與預設邊距
    ========================================================================== */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    list-style: none !important; /* 全域強制殺掉所有 <ul> <li> 的點點 */
+    list-style: none !important; /* 強制消除點點 */
 }
 
 body {
@@ -15,84 +15,76 @@ body {
 }
 
 /* ==========================================================================
-   2. 導覽列 (Header) - LOGO 與 Flex 排版
+   2. 導覽列 (Header) - 移除所有黑色邊框
    ========================================================================== */
 .main-header {
     width: 100%;
     background-color: #ffffff;
-    border-bottom: 2px solid #000;
+    /* 移除 border-bottom: 2px solid #000; */
 }
 
 .header-container {
-    display: flex !important;  /* 開啟彈性佈局讓元件橫排 */
-    align-items: center;   /* 垂直居中 */
-    height: 80px;
+    display: flex !important;
+    align-items: center;
+    height: 100px; /* 稍微增加高度讓 LOGO 更舒適 */
     width: 100%;
+    padding: 0 20px; /* 讓內容不要貼到瀏覽器邊緣 */
 }
 
-/* LOGO 容器：針對方形 LOGO 優化，不裁切、不拉寬 */
+/* LOGO 容器：移除右側黑線並調整位置 */
 .logo-box {
-    width: 150px; 
+    width: auto; /* 改為自動寬度 */
     height: 100%;
-    background-color: transparent; /* LOGO 背景改為透明 */
-    border-right: 2px solid #000;
+    background-color: transparent;
+    /* 移除 border-right: 2px solid #000; */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
-    overflow: hidden;
+    margin-right: 15px; /* 增加與文字之間的間距 */
 }
 
-/* LOGO 圖片：保持原比例 (方形)，置中顯示，不裁切、勿拉寬 */
+/* LOGO 圖片樣式 */
 .logo-box img {
-    max-width: 90%;    /* 寬度不超過容器 90% */
-    max-height: 85%;   /* 高度不超過容器 85% */
+    max-height: 80px; /* 限制高度，確保不貼齊黑線位置 */
+    width: auto;
+    object-fit: contain;
     display: block;
-    object-fit: contain; /* 關鍵：圖片在容器內保持原比例縮放，不裁切 */
-}
-
-.logo-box a {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
 }
 
 .header-title {
-    margin-left: 20px;
-    font-size: 24px;
+    font-size: 28px;
     font-weight: bold;
-    flex-grow: 1; /* 佔據中間空間，推開右側選單 */
+    flex-grow: 1;
+    color: #000;
 }
 
-/* 選單列表 (關鍵：確保橫向) */
+/* 選單列表 */
 .nav-list {
-    display: flex !important; /* 確保選單橫向排列 */
-    padding-right: 40px;
+    display: flex !important;
+    padding-right: 20px;
 }
 
 .nav-list li {
     margin-left: 30px;
-    position: relative;    /* 下拉選單定位基準 */
+    position: relative;
 }
 
-/* 導覽列連結與變色 (#3B7D23) */
 .nav-links a {
     text-decoration: none;
     color: #000000;
     font-weight: bold;
     transition: 0.3s;
+    font-size: 18px;
 }
 
 .nav-links a:hover, 
 .nav-links .dropdown:hover .dropbtn {
-    color: #3B7D23 !important; /* 滑鼠移上去變綠色 */
+    color: #3B7D23 !important;
 }
 
 /* ==========================================================================
-   3. 下拉選單樣式 - 增加間距 (1.5行效果)
+   3. 下拉選單樣式 (1.5行效果)
    ========================================================================== */
 .dropdown-content {
     display: none;
@@ -100,30 +92,25 @@ body {
     top: 100%;
     left: 0;
     background-color: #ffffff;
-    min-width: 150px;
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-    border: 1px solid #ddd;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.1); /* 改為淡陰影 */
+    border: 1px solid #eee; /* 改為極淡邊框 */
     z-index: 100;
 }
 
 .dropdown:hover .dropdown-content {
-    display: block; /* 移入顯示 */
+    display: block;
 }
 
 .dropdown-content li a {
-    padding: 16px 20px;    /* 增加內邊距達成 1.5 行感 */
+    padding: 16px 20px;
     font-weight: normal;
     display: block;
-    line-height: 1.5;      /* 設定行高 */
-}
-
-.dropdown-content li a:hover {
-    background-color: #f5f5f5;
-    color: #3B7D23 !important;
+    line-height: 1.5;
 }
 
 /* ==========================================================================
-   4. Loading 閃爍動畫 (導覽列與頁面共用)
+   4. Loading 閃爍動畫
    ========================================================================== */
 .loading-item, .loading-text {
     color: #999 !important;
@@ -137,12 +124,12 @@ body {
 }
 
 /* ==========================================================================
-   5. 產品頁面 專屬樣式 (保留原樣)
+   5. 產品頁面專屬樣式 (也移除相關黑線)
    ========================================================================== */
 .product-hero-bg {
     width: 100%;
     height: 300px;
-    background-color: #d3d3d3;
+    background-color: #f0f0f0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -151,12 +138,11 @@ body {
 }
 
 .content-container {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 30px auto;
     padding: 0 50px;
 }
 
-/* 麵包屑導覽 */
 .breadcrumb {
     margin: 20px 0;
     font-size: 16px;
@@ -164,39 +150,28 @@ body {
 }
 
 .breadcrumb a {
-    text-decoration: underline; /* 首頁要有底線 */
-    color: blue;               /* 首頁字體為藍色 */
+    color: blue;
+    text-decoration: underline;
 }
 
-/* 大標題 A */
 .main-category-title {
     font-size: 48px;
     margin: 10px 0;
 }
 
-/* 綠色裝飾底線 */
 .green-line {
     width: 100%;
-    height: 3px;
+    height: 4px;
     background-color: #3B7D23;
     margin-bottom: 40px;
 }
 
-/* 產品編號清單 (1, 2, 11) */
-.product-list-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 25px; /* 清單項目間隔 */
-}
-
 .product-item {
-    font-size: 28px;
-    padding-left: 10px;
+    font-size: 32px;
+    margin-bottom: 15px;
     cursor: pointer;
-    transition: 0.2s;
 }
 
 .product-item:hover {
     color: #3B7D23;
-    transform: translateX(5px); /* 滑過時稍微右移 */
 }
