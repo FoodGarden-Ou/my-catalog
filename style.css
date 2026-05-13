@@ -1,9 +1,9 @@
-/* --- 1. 全域重置：徹底消除黑點與邊距 --- */
+/* --- 1. 全域重置：徹底消除黑點與預設邊距 --- */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    list-style: none !important;
+    list-style: none !important; /* 強制消除所有 <ul> <li> 的點點 */
 }
 
 body {
@@ -25,117 +25,20 @@ body {
     width: 100%;
 }
 
+/* LOGO 容器：針對方形 LOGO 優化，不裁切、不拉寬 */
 .logo-box {
-    width: 150px;
+    width: 150px; 
     height: 100%;
-    background-color: #d3d3d3;
+    background-color: transparent; /* 移除灰色背景 */
     border-right: 2px solid #000;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: bold;
     flex-shrink: 0;
+    overflow: hidden;
 }
 
-.header-title {
-    margin-left: 20px;
-    font-size: 24px;
-    font-weight: bold;
-    flex-grow: 1;
-}
-
-.nav-list {
-    display: flex !important;
-    padding-right: 40px;
-}
-
-.nav-list li {
-    margin-left: 30px;
-    position: relative;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: #000;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-/* 滑鼠移上去變綠色 */
-.nav-links a:hover, .nav-links .dropdown:hover .dropbtn {
-    color: #3B7D23 !important;
-}
-
-/* --- 3. 下拉選單樣式 (1.5行間距) --- */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #fff;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-    border: 1px solid #ddd;
-    z-index: 100;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown-content li a {
-    padding: 16px 20px; /* 增加間距達成 1.5 行感 */
-    display: block;
-    line-height: 1.5;
-    font-weight: normal;
-}
-
-/* --- 4. 產品頁內容樣式 --- */
-.product-hero-bg {
-    width: 100%;
-    height: 300px;
-    background-color: #d3d3d3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 48px;
-    font-weight: bold;
-}
-
-.content-container {
-    max-width: 1200px;
-    margin: 30px auto;
-    padding: 0 40px;
-}
-
-.breadcrumb { margin-bottom: 20px; font-size: 16px; }
-.breadcrumb a { color: blue; text-decoration: underline; }
-
-.main-category-title { font-size: 56px; margin: 10px 0; }
-
-.green-line {
-    width: 100%;
-    height: 4px;
-    background-color: #3B7D23;
-    margin-bottom: 30px;
-}
-
-.product-item {
-    font-size: 32px;
-    margin-bottom: 15px;
-    cursor: pointer;
-}
-
-.product-item:hover { color: #3B7D23; }
-
-/* Loading 閃爍動畫 */
-.loading-item, .loading-text {
-    color: #999 !important;
-    animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-    0% { opacity: 1; }
-    50% { opacity: 0.5; }
-    100% { opacity: 1; }
-}
+/* LOGO 圖片：保持原比例 (方形)，置中顯示 */
+.logo-box img {
+    max-width: 90%;    /* 寬度不超過容器 90% */
+    max-height: 85%;   /* 高度不超過容器 85
