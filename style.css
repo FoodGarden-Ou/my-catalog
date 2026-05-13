@@ -1,9 +1,9 @@
-/* --- 1. 基礎重置 --- */
+/* --- 1. 全域重置：徹底消除黑點與邊距 --- */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    list-style: none !important; /* 殺掉所有黑點點 */
+    list-style: none !important;
 }
 
 body {
@@ -11,7 +11,7 @@ body {
     background-color: #fff;
 }
 
-/* --- 2. 導覽列排版 --- */
+/* --- 2. 導覽列排版 (Header) --- */
 .main-header {
     width: 100%;
     background-color: #ffffff;
@@ -61,11 +61,12 @@ body {
     transition: 0.3s;
 }
 
+/* 滑鼠移上去變綠色 */
 .nav-links a:hover, .nav-links .dropdown:hover .dropbtn {
     color: #3B7D23 !important;
 }
 
-/* --- 3. 下拉選單 (1.5行間距) --- */
+/* --- 3. 下拉選單樣式 (1.5行間距) --- */
 .dropdown-content {
     display: none;
     position: absolute;
@@ -78,16 +79,18 @@ body {
     z-index: 100;
 }
 
-.dropdown:hover .dropdown-content { display: block; }
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 
 .dropdown-content li a {
-    padding: 16px 20px;
+    padding: 16px 20px; /* 增加間距達成 1.5 行感 */
     display: block;
     line-height: 1.5;
     font-weight: normal;
 }
 
-/* --- 4. 產品頁內容 --- */
+/* --- 4. 產品頁內容樣式 --- */
 .product-hero-bg {
     width: 100%;
     height: 300px;
@@ -126,5 +129,13 @@ body {
 .product-item:hover { color: #3B7D23; }
 
 /* Loading 閃爍動畫 */
-.loading-text { font-size: 20px; color: #999; animation: pulse 1.5s infinite; }
-@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+.loading-item, .loading-text {
+    color: #999 !important;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
