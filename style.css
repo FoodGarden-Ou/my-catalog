@@ -1,82 +1,86 @@
-/* ==========================================================================
-   1. 基礎設定與字體
-   ========================================================================== */
-* {
-    box-sizing: border-box; /* 確保寬度包含邊框 */
-    margin: 0;
-    padding: 0;
-}
+/* 基礎清除與字體 */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "Microsoft JhengHei", sans-serif; background-color: #fff; }
 
-body {
-    font-family: "Microsoft JhengHei", Arial, sans-serif; /* 設定微軟正黑體 */
-    line-height: 1.6;
-    color: #333;
-    background-color: #ffffff;
-}
-
-/* ==========================================================================
-   2. 導覽列 (Title.html) 樣式
-   ========================================================================== */
+/* 導覽列容器 */
 .main-header {
     width: 100%;
     background-color: #ffffff;
-    border-bottom: 2px solid #000000; /* 底部黑線 */
-    position: sticky; /* 捲動時固定在頂部 */
+    border-bottom: 2px solid #000;
+    position: sticky;
     top: 0;
     z-index: 1000;
 }
-
 .header-container {
     display: flex;
     align-items: center;
-    height: 80px; /* 導覽列高度 */
-    max-width: 1400px; /* 最大寬度限制 */
+    height: 80px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-/* 左側：LOGO 區塊 */
+/* LOGO 與 標題 */
 .logo-box {
-    width: 150px;
+    width: 120px;
     height: 100%;
-    background-color: #d3d3d3; /* 圖片中的灰底 */
-    border-right: 2px solid #000000; /* 右側黑線 */
+    background-color: #d3d3d3;
+    border-right: 2px solid #000;
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: bold;
-    font-size: 20px;
 }
+.header-title { margin-left: 20px; font-size: 24px; font-weight: bold; flex-grow: 1; }
 
-/* 中間：標題字串 */
-.header-title {
-    margin-left: 20px;
-    font-size: 24px;
-    font-weight: bold;
-    flex-grow: 1; /* 佔據剩餘空間，將選單推向右邊 */
-}
-
-/* 右側：選單排版 */
-.nav-links ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding-right: 40px;
-}
-
-.nav-links li {
-    position: relative; /* 給下拉選單定位用 */
-    margin-left: 30px;
-}
-
-/* --- 【重點】導覽列文字顏色與滑過效果 --- */
+/* 選單連結與變色邏輯 */
+.nav-links ul { display: flex; list-style: none; padding-right: 20px; }
+.nav-links li { position: relative; margin-left: 30px; }
 .nav-links a {
     text-decoration: none;
-    color: #000000; /* 預設黑色 */
+    color: #000; /* 預設黑色 */
     font-size: 18px;
     font-weight: bold;
-    transition: color 0.3s ease;
+    transition: 0.3s;
 }
 
-/* 鼠標滑動或點擊後的顏色修改處 */
+/* 【特別標註：顏色修改處】 */
 .nav-links a:hover, 
 .nav-links .dropdown:hover .dropbtn {
+    color: #3B7D23 !important; 
+}
+
+/* 下拉選單 */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    border: 1px solid #ddd;
+    list-style: none;
+}
+.dropdown:hover .dropdown-content { display: block; }
+.dropdown-content li { margin: 0; border-bottom: 1px solid #eee; }
+.dropdown-content li a {
+    padding: 12px 16px;
+    font-size: 16px;
+    font-weight: normal;
+    display: block;
+}
+
+/* 產品頁排版 */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+.product-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+}
+.product-card img { width: 100%; height: 150px; object-fit: cover; }
