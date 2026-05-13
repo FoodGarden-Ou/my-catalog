@@ -4,46 +4,48 @@ document.addEventListener('DOMContentLoaded', () => {
     loadNavbar();
 });
 
-// 1. 載入導覽列
+// 1. 載入導覽列組件
 function loadNavbar() {
     fetch('title.html')
         .then(res => res.text())
         .then(html => {
             document.getElementById('nav-placeholder').innerHTML = html;
-            // 載入完導覽列，才去抓資料
+            // 載入完導覽列，才開始抓取 Google Sheet 資料
             fetchData();
         });
 }
 
-// 2. 抓取資料並分發任務
+// 2. 抓取資料
 function fetchData() {
     fetch(G_SHEET_URL)
         .then(res => res.json())
         .then(data => {
-            renderDropdown(data); // 渲染導覽列
+            renderDropdown(data);
+            // 如果在產品頁面，執行產品渲染
             if (document.getElementById('product-grid')) {
-                renderProducts(data); // 渲染產品頁
+                renderProducts(data);
             }
         });
 }
 
-// 3. 處理下拉選單 (Unique 類別)
+// 3. 渲染下拉選單 (不含「類」字)
 function renderDropdown(data) {
     const list = document.getElementById('product-category-list');
     if (!list) return;
 
-    // 取得所有 category 並去重
+    // 取得唯一類別清單
     const categories = [...new Set(Object.values(data).map(item => item.category))];
 
     list.innerHTML = ''; 
     categories.forEach(cat => {
         const li = document.createElement('li');
+        // A、B、C 類點擊後跳轉到產品頁，並篩選類別
         li.innerHTML = `<a href="product.html?type=${encodeURIComponent(cat)}">${cat}</a>`;
         list.appendChild(li);
     });
 }
 
-// 4. 產品頁渲染與篩選
+// 4. 產品頁渲染邏輯
 function renderProducts(data) {
     const grid = document.getElementById('product-grid');
     const urlParams = new URLSearchParams(window.location.search);
