@@ -1,11 +1,11 @@
 /* ==========================================================================
-   1. 基礎重置 (Reset) - 徹底消除黑點點與預設邊距
+   1. 強制重置 (Global Reset) - 消除點點與邊距
    ========================================================================== */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    list-style: none !important; /* 全域強制殺掉所有 <ul> <li> 的點點 */
+    list-style: none !important; /* 徹底消除所有黑點點 */
 }
 
 body {
@@ -15,28 +15,25 @@ body {
 }
 
 /* ==========================================================================
-   2. 導覽列 (title.html) - 橫向排版與 LOGO 樣式
+   2. 導覽列排版 (Header & Nav)
    ========================================================================== */
 .main-header {
     width: 100%;
     background-color: #ffffff;
     border-bottom: 2px solid #000;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
 }
 
 .header-container {
-    display: flex;         /* 關鍵：開啟彈性佈局讓元件橫排 */
-    align-items: center;   /* 垂直居中 */
+    display: flex !important;  /* 強制橫向排列 */
+    align-items: center;
     height: 80px;
     width: 100%;
 }
 
 .logo-box {
-    width: 120px;
+    width: 150px;
     height: 100%;
-    background-color: #d3d3d3; /* 灰色背景 */
+    background-color: #d3d3d3;
     border-right: 2px solid #000;
     display: flex;
     justify-content: center;
@@ -49,34 +46,35 @@ body {
     margin-left: 20px;
     font-size: 24px;
     font-weight: bold;
-    flex-grow: 1; /* 佔據中間空間，推開右側選單 */
+    flex-grow: 1; /* 佔據空間推開選單 */
 }
 
+/* 選單橫向排隊 */
 .nav-list {
-    display: flex;         /* 讓選單文字橫著排 */
+    display: flex !important; 
+    flex-direction: row !important;
     padding-right: 40px;
 }
 
 .nav-list li {
     margin-left: 30px;
-    position: relative;    /* 下拉選單定位基準 */
+    position: relative;
 }
 
-/* 導覽列連結與變色 (#3B7D23) */
+/* 文字顏色與變色 (#3B7D23) */
 .nav-links a {
     text-decoration: none;
-    color: #000000;
+    color: #000;
     font-weight: bold;
-    transition: 0.3s;
 }
 
 .nav-links a:hover, 
 .nav-links .dropdown:hover .dropbtn {
-    color: #3B7D23 !important; /* 滑鼠移上去變綠色 */
+    color: #3B7D23 !important;
 }
 
 /* ==========================================================================
-   3. 下拉選單樣式 - 增加間距 (1.5行效果)
+   3. 下拉選單樣式 (加寬與行高優化)
    ========================================================================== */
 .dropdown-content {
     display: none;
@@ -84,36 +82,85 @@ body {
     top: 100%;
     left: 0;
     background-color: #ffffff;
-    min-width: 150px;
+    min-width: 160px;
     box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
     border: 1px solid #ddd;
     z-index: 100;
 }
 
 .dropdown:hover .dropdown-content {
-    display: block; /* 移入顯示 */
+    display: block;
 }
 
 .dropdown-content li a {
-    padding: 16px 20px;    /* 增加內邊距達成 1.5 行感 */
-    font-weight: normal;
+    padding: 16px 20px; /* 1.5行間距感 */
     display: block;
-    line-height: 1.5;      /* 設定行高 */
+    line-height: 1.5;
+    font-weight: normal;
 }
 
 .dropdown-content li a:hover {
     background-color: #f5f5f5;
-    color: #3B7D23 !important;
 }
 
 /* ==========================================================================
-   4. 產品頁面 (product.html) 專屬樣式
+   4. 產品頁內容樣式 (Breadcrumb & List)
    ========================================================================== */
-
-/* 產品頁大圖 */
 .product-hero-bg {
     width: 100%;
     height: 300px;
     background-color: #d3d3d3;
     display: flex;
     justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* 麵包屑 */
+.breadcrumb {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.breadcrumb a {
+    color: blue;
+    text-decoration: underline;
+}
+
+/* 大標題 A */
+.main-category-title {
+    font-size: 56px;
+    margin: 10px 0;
+}
+
+/* 綠色裝飾線 */
+.green-line {
+    width: 100%;
+    height: 4px;
+    background-color: #3B7D23;
+    margin-bottom: 30px;
+}
+
+/* 產品編號清單 (1, 2, 11) */
+.product-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.product-item {
+    font-size: 32px;
+    cursor: pointer;
+}
+
+.product-item:hover {
+    color: #3B7D23;
+}
