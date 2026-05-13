@@ -66,7 +66,7 @@ body {
     color: #3B7D23 !important;
 }
 
-/* --- 4. 下拉選單樣式 --- */
+/* --- 4. 下拉選單樣式修正 --- */
 .dropdown-content {
     display: none;
     position: absolute;
@@ -76,8 +76,24 @@ body {
     min-width: 140px;
     box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
     border: 1px solid #ddd;
-    padding: 10px 0;
+    padding: 5px 0; /* 縮減整體容器內邊距，由項目自己撐開 */
     z-index: 100;
+}
+
+/* 這是你要調整間距的地方：1.5 行效果 */
+.dropdown-content li a {
+    display: block;
+    padding: 16px 20px; /* 增加上下 padding 到 16px，視覺上就有 1.5 行以上的寬敞感 */
+    text-decoration: none;
+    color: #000;
+    line-height: 1.5;   /* 直接設定行高為 1.5 */
+    transition: background 0.3s;
+}
+
+/* 滑鼠移上去的背景色變換 */
+.dropdown-content li a:hover {
+    background-color: #f5f5f5;
+    color: #3B7D23 !important;
 }
 
 .dropdown:hover .dropdown-content {
