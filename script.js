@@ -1,3 +1,4 @@
+/* --- script.js --- */
 const G_SHEET_URL = 'https://script.google.com/macros/s/AKfycbzoRn5kCz1DSvFKqDhCJJinZRdIKtMEw-4Ns7nHZ6f5sccKr7t-IyhAk7Erdpq3n8Rd/exec';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -11,43 +12,47 @@ function loadNavbar() {
         .then(html => {
             document.getElementById('nav-placeholder').innerHTML = html;
             
-            // --- 精確修正：只讓「產品」按鈕不跳轉 ---
-            const allLinks = document.querySelectorAll('.nav-links a');
-            allLinks.forEach(link => {
-                // 只有帶有 dropbtn 類別的（即產品按鈕）才執行 e.preventDefault()
+            // 精確控制：只有「產品」標籤不跳轉
+            const links = document.querySelectorAll('.nav-links a');
+            links.forEach(link => {
                 if (link.classList.contains('dropbtn')) {
-                    link.addEventListener('click', (e) => {
-                        e.preventDefault();
-                    });
+                    link.onclick = (e) => e.preventDefault();
                 }
             });
 
-            fetchData(); // 載入完導覽列後抓取資料
-        })
-        .catch(err => console.error('導覽列載入失敗:', err));
+            fetchData(); // 導覽列就緒後才抓資料
+        });
 }
 
-// 2. 抓取資料並判斷頁面任務
+// 2. 抓取資料庫
 function fetchData() {
     fetch(G_SHEET_URL)
         .then(res => res.json())
         .then(data => {
-            renderDropdown(data); // 渲染導覽列下拉選單
+            renderDropdown(data); // 覆蓋導覽列的 Loading...
             
-            // 判斷是否在產品頁面 (檢查是否有 product-id-list 容器)
+            // 只有在產品頁面才執行清單渲染
             if (document.getElementById('product-id-list')) {
                 renderProductList(data);
             }
+        })
+        .catch(err => {
+            console.error("資料載入錯誤:", err);
+            const list = document.getElementById('product-category-list');
+            if (list) list.innerHTML = '<li><a href="#">載入失敗</a></li>';
         });
 }
 
-// 3. 渲染下拉選單 (不帶「類」字，間距由 CSS 控制)
+// 3. 渲染下拉選單
 function renderDropdown(data) {
     const list = document.getElementById('product-category-list');
     if (!list) return;
 
+    // 取得唯一類別清單
     const categories = [...new Set(Object.values(data).map(item => item.category))];
-    list.innerHTML = ''; 
+    
+    list.innerHTML = ''; // 清除 Loading...
+    
     categories.forEach(cat => {
         const li = document.createElement('li');
         li.innerHTML = `<a href="product.html?type=${encodeURIComponent(cat)}">${cat}</a>`;
@@ -55,7 +60,7 @@ function renderDropdown(data) {
     });
 }
 
-// 4. 產品頁內容渲染
+// 4. 渲染產品頁內容 (1, 2, 3...)
 function renderProductList(data) {
     const listContainer = document.getElementById('product-id-list');
     const categoryHeader = document.getElementById('display-category-name');
@@ -64,17 +69,24 @@ function renderProductList(data) {
     const urlParams = new URLSearchParams(window.location.search);
     const selectedType = urlParams.get('type') || 'A';
 
-    categoryHeader.textContent = selectedType;
-    breadcrumbType.textContent = selectedType;
+    // 覆蓋頁面上的 Loading...
+    if (categoryHeader) categoryHeader.textContent = selectedType;
+    if (breadcrumbType) breadcrumbType.textContent = selectedType;
 
     const products = Object.values(data);
     const filtered = products.filter(p => p.category === selectedType);
 
-    listContainer.innerHTML = '';
+    listContainer.innerHTML = ''; // 清除資料載入中...
+    
+    if (filtered.length === 0) {
+        listContainer.innerHTML = '<div>無對應產品資料</div>';
+        return;
+    }
+
     filtered.forEach(p => {
         const div = document.createElement('div');
         div.className = 'product-item';
-        div.textContent = p.title; // 顯示 ID (如 1, 2, 11)
+        div.textContent = p.title; // 顯示 B 欄編號
         listContainer.appendChild(div);
     });
 }
