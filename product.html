@@ -1,15 +1,29 @@
-<div id="nav-placeholder"></div>
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>產品頁面</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="nav-placeholder"></div>
 
-<div class="product-hero-bg">圖片</div>
+    <div class="product-hero-bg">圖片</div>
 
-<main class="content-container">
-    <nav class="breadcrumb">
-        <a href="index.html">首頁</a> &gt; <span id="breadcrumb-type">A</span>
-    </nav>
+    <main class="content-container">
+        <nav class="breadcrumb">
+            <a href="index.html">首頁</a> &gt; <span id="breadcrumb-type">Loading...</span>
+        </nav>
 
-    <h1 class="main-category-title" id="display-category-name">A</h1>
-    <div class="green-line"></div>
+        <h1 id="display-category-name" class="main-category-title">Loading...</h1>
+        <div class="green-line"></div>
 
-    <div id="product-id-list" class="product-list-wrapper">
+        <div id="product-id-list" class="product-list-wrapper">
+            <div class="loading-text">資料載入中，請稍候...</div>
         </div>
-</main>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
