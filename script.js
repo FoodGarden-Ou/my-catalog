@@ -38,7 +38,7 @@ function renderDropdown(data) {
     list.innerHTML = ''; 
     categories.forEach(cat => {
         const li = document.createElement('li');
-        li.innerHTML = `<a href="product.html?type=${encodeURIComponent(cat)}">${cat} 類</a>`;
+        li.innerHTML = `<a href="product.html?type=${encodeURIComponent(cat)}">${cat}</a>`;
         list.appendChild(li);
     });
 }
