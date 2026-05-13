@@ -1,11 +1,9 @@
-/* ==========================================================================
-   1. 基礎重置 - 徹底殺掉所有點點 (這解決了你截圖中的黑點問題)
-   ========================================================================== */
+/* --- 1. 基礎重置 --- */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    list-style: none !important; /* 強制消除所有清單點點 */
+    list-style: none !important; /* 殺掉所有黑點點 */
 }
 
 body {
@@ -13,9 +11,7 @@ body {
     background-color: #fff;
 }
 
-/* ==========================================================================
-   2. 導覽列樣式 (Header)
-   ========================================================================== */
+/* --- 2. 導覽列排版 --- */
 .main-header {
     width: 100%;
     background-color: #ffffff;
@@ -23,7 +19,7 @@ body {
 }
 
 .header-container {
-    display: flex !important;  /* 確保橫向排列 */
+    display: flex !important;
     align-items: center;
     height: 80px;
     width: 100%;
@@ -49,7 +45,7 @@ body {
 }
 
 .nav-list {
-    display: flex !important; /* 確保選單是橫的 */
+    display: flex !important;
     padding-right: 40px;
 }
 
@@ -58,19 +54,18 @@ body {
     position: relative;
 }
 
-/* 連結與顏色 (#3B7D23) */
 .nav-links a {
     text-decoration: none;
     color: #000;
     font-weight: bold;
+    transition: 0.3s;
 }
 
-.nav-links a:hover, 
-.nav-links .dropdown:hover .dropbtn {
+.nav-links a:hover, .nav-links .dropdown:hover .dropbtn {
     color: #3B7D23 !important;
 }
 
-/* 下拉選單間距 (1.5 行) */
+/* --- 3. 下拉選單 (1.5行間距) --- */
 .dropdown-content {
     display: none;
     position: absolute;
@@ -86,16 +81,13 @@ body {
 .dropdown:hover .dropdown-content { display: block; }
 
 .dropdown-content li a {
-    padding: 16px 20px; /* 增加間距 */
+    padding: 16px 20px;
     display: block;
     line-height: 1.5;
+    font-weight: normal;
 }
 
-/* ==========================================================================
-   3. 產品頁內容樣式 (這解決了你截圖中下方排版跑掉的問題)
-   ========================================================================== */
-
-/* 產品頁灰色大圖區 */
+/* --- 4. 產品頁內容 --- */
 .product-hero-bg {
     width: 100%;
     height: 300px;
@@ -105,58 +97,34 @@ body {
     align-items: center;
     font-size: 48px;
     font-weight: bold;
-    margin-bottom: 20px;
 }
 
-/* 內容容器 - 確保左右有留白 (對齊導覽列) */
 .content-container {
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 40px; /* 這裡的 padding 要跟導覽列對齊 */
-    text-align: left; /* 確保文字靠左 */
+    margin: 30px auto;
+    padding: 0 40px;
 }
 
-/* 麵包屑 首頁 > A */
-.breadcrumb {
-    font-size: 16px;
-    margin: 20px 0;
-    color: #666;
-}
+.breadcrumb { margin-bottom: 20px; font-size: 16px; }
+.breadcrumb a { color: blue; text-decoration: underline; }
 
-.breadcrumb a {
-    color: blue; /* 首頁連結藍色 */
-    text-decoration: underline;
-}
+.main-category-title { font-size: 56px; margin: 10px 0; }
 
-/* 類別大標題 A */
-.main-category-title {
-    font-size: 56px;
-    font-weight: bold;
-    margin: 10px 0 5px 0;
-}
-
-/* 綠色裝飾線 */
 .green-line {
     width: 100%;
     height: 4px;
-    background-color: #3B7D23; /* 你要求的綠色 */
+    background-color: #3B7D23;
     margin-bottom: 30px;
-}
-
-/* 產品編號清單 1, 2, 3... */
-.product-list-wrapper {
-    display: flex;
-    flex-direction: column; /* 垂直清單 */
-    gap: 20px;
 }
 
 .product-item {
     font-size: 32px;
-    color: #000;
+    margin-bottom: 15px;
     cursor: pointer;
-    padding-left: 5px;
 }
 
-.product-item:hover {
-    color: #3B7D23;
-}
+.product-item:hover { color: #3B7D23; }
+
+/* Loading 閃爍動畫 */
+.loading-text { font-size: 20px; color: #999; animation: pulse 1.5s infinite; }
+@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
