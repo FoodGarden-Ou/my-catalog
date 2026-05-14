@@ -177,7 +177,7 @@ body {
 }
 
 /* ==========================================================================
-   聯絡我們頁面 (Contact Page) 最終修正版樣式
+   聯絡我們頁面 (Contact Page) 精確間距修正版 - 增加表單標題間距
    ========================================================================== */
 
 /* 頁面主要容器 */
@@ -193,18 +193,17 @@ body {
     font-size: 24px;
     font-weight: bold;
     color: #000;
-    /* 移除原本的 margin-bottom，改用下方 info-content 的 margin-top 來精確控制 */
     margin-bottom: 0; 
 }
 
-/* 聯絡資訊內容容器 */
+/* --- 聯絡資訊區塊 --- */
 .contact-info-text {
-    /* 電話與下方「在線諮詢」的間距放大 (2倍間距感) */
+    /* 電話與下方「在線諮詢」的間距 (2倍間距) */
     margin-bottom: 3.5em; 
 }
 
+/* 聯絡資訊標題與地址之間的間距 (1.5倍) */
 .contact-info-text .info-content {
-    /* 聯絡資訊標題(聯絡資訊)與地址之間的間距 (1.5倍間距感) */
     margin-top: 1.5em; 
 }
 
@@ -212,6 +211,17 @@ body {
     font-size: 18px;
     margin-bottom: 15px;
     color: #000;
+}
+
+/* --- 在線諮詢區塊 --- */
+.contact-form-area {
+    /* 這裡新增：在線諮詢標題與第一個方框之間的間距 (1.5倍) */
+    margin-top: 1.5em; 
+}
+
+/* 針對表單內的標題特別設定間距 */
+.contact-form-area .contact-section-header {
+    margin-bottom: 1.5em; /* 確保標題與下方的姓名方框有 1.5 行間距 */
 }
 
 /* 表單輸入框樣式 */
@@ -237,11 +247,6 @@ body {
     min-height: 250px;
 }
 
-#contact-form input:focus,
-#contact-form textarea:focus {
-    border-width: 1.5px;
-}
-
 /* 按鈕容器：靠右對齊 */
 .form-action-row {
     display: flex;
@@ -250,14 +255,13 @@ body {
     margin-top: 12pt; 
 }
 
-/* 送出訊息按鈕 (方框變小、置右) */
+/* 送出訊息按鈕 (縮小方框) */
 #submit-btn {
-    /* 縮小 padding 讓按鈕方框變小 */
     padding: 6px 25px; 
     background-color: #d3d3d3;
     border: 1px solid #000;
     color: #000;
-    font-size: 16px; /* 稍微縮小字體讓按鈕更精緻 */
+    font-size: 16px;
     cursor: pointer;
     transition: background-color 0.2s;
 }
@@ -266,21 +270,9 @@ body {
     background-color: #c0c0c0;
 }
 
-/* ==========================================================================
-   手機版響應式修正
-   ========================================================================== */
+/* 手機版適配 */
 @media (max-width: 768px) {
-    .contact-main-container {
-        margin: 20px auto;
-        padding: 0 15px;
-    }
-
-    .contact-section-header {
-        font-size: 22px;
-    }
-
     #submit-btn {
-        /* 手機版維持小方框並靠右，不再強制撐滿 */
         width: auto; 
     }
 }
