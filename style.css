@@ -176,142 +176,104 @@ body {
     color: #3B7D23;
 }
 
-/* 聯絡頁面容器 */
-.contact-wrapper {
-    display: flex;
-    gap: 50px;
-    margin-top: 30px;
+/* ==========================================================================
+   聯絡我們頁面 (Contact Page) 整併樣式
+   ========================================================================== */
+
+/* 頁面主要容器 - 調整寬度使表單更精緻 */
+.content-container {
+    max-width: 800px; 
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
-/* 左側資訊 */
-.contact-info {
-    flex: 1;
+/* 聯絡資訊與表單區塊間距 */
+.contact-section {
+    margin-bottom: 40px;
 }
 
-.info-item {
-    margin-bottom: 25px;
+.section-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #000;
 }
 
-.info-item h3 {
-    color: #3B7D23; /* 你的品牌綠 */
-    margin-bottom: 5px;
+/* 左側/上方：資訊內容樣式 */
+.info-content p {
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: #333;
 }
 
-/* 右側表單 */
-.contact-form-box {
-    flex: 1;
-    background-color: #f9f9f9;
-    padding: 30px;
-    border-radius: 8px;
+/* 右側/下方：表單輸入框樣式 (依照截圖：全寬、黑框) */
+.form-group {
+    margin-bottom: 15px;
 }
 
-.contact-form-box input, 
-.contact-form-box textarea {
+#contact-form input,
+#contact-form textarea {
     width: 100%;
     padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-}
-
-#submit-btn {
-    background-color: #3B7D23;
-    color: white;
-    border: none;
-    padding: 12px 30px;
+    border: 1px solid #000; /* 統一使用黑色細邊框 */
     font-size: 18px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-#submit-btn:hover {
-    background-color: #2e611b;
-}
-
-/* 手機版響應式 */
-@media (max-width: 768px) {
-    .contact-wrapper {
-        flex-direction: column; /* 變為上下排列 */
-    }
-}
-
-/* 聯絡頁面佈局 */
-.contact-wrapper {
-    display: flex;
-    gap: 60px;
-    margin-top: 30px;
-}
-
-.contact-info {
-    flex: 0 0 300px; /* 固定左側寬度 */
-}
-
-.info-item {
-    margin-bottom: 30px;
-}
-
-.info-item h3 {
-    color: #3B7D23;
-    font-size: 24px;
-    margin-bottom: 8px;
-}
-
-.info-item p {
-    font-size: 18px;
-}
-
-/* 在線諮詢表單樣式 (依照截圖) */
-.contact-form-box {
-    flex: 1;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.contact-form-box input, 
-.contact-form-box textarea {
-    width: 100%;
-    padding: 15px;
-    border: 2px solid #001f3f; /* 深藍色框線 */
-    font-size: 24px;          /* 保持原定字體大小感 */
+    font-family: inherit;
     outline: none;
     display: block;
+    background-color: #fff;
+    transition: border-color 0.2s;
 }
 
-.contact-form-box textarea {
-    resize: none;             /* 禁止使用者縮放高度 */
+#contact-form textarea {
+    resize: none; /* 禁止手動調整大小，維持美觀 */
 }
 
-/* 送出訊息按鈕靠右排版 */
+#contact-form input:focus,
+#contact-form textarea:focus {
+    border-color: #3B7D23; /* 聚焦時顯示品牌綠色 */
+}
+
+/* 送出訊息按鈕排版：靠右、灰色背景、黑框 */
 .form-submit-row {
     display: flex;
-    justify-content: flex-end; /* 將按鈕推向最右側 */
-    margin-top: 10px;
+    justify-content: flex-end;
+    margin-top: 15px;
 }
 
 #submit-btn {
-    padding: 10px 30px;
-    background-color: transparent;
-    border: 2px solid #001f3f; /* 框線樣式按鈕 */
+    padding: 8px 35px;
+    background-color: #d3d3d3; /* 灰色背景 */
+    border: 1px solid #000;    /* 黑色邊框 */
     color: #000;
-    font-size: 20px;
+    font-size: 18px;
+    font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s ease;
 }
 
 #submit-btn:hover {
-    background-color: #f0f0f0;
+    background-color: #c0c0c0;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
 }
 
-/* 手機版適配 */
+/* 手機版響應式適配 (Media Query) */
 @media (max-width: 768px) {
-    .contact-wrapper {
-        flex-direction: column;
-        gap: 30px;
+    .content-container {
+        padding: 0 15px;
+        margin: 20px auto;
     }
-    .contact-info {
-        flex: none;
+
+    .section-title {
+        font-size: 22px;
+    }
+
+    #contact-form input,
+    #contact-form textarea {
+        font-size: 16px; /* 手機版字體略小，避免輸入時頁面跳動 */
+    }
+
+    #submit-btn {
+        width: 100%; /* 手機版按鈕撐滿，方便點擊 */
+        text-align: center;
     }
 }
