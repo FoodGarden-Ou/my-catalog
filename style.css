@@ -235,3 +235,83 @@ body {
         flex-direction: column; /* 變為上下排列 */
     }
 }
+
+/* 聯絡頁面佈局 */
+.contact-wrapper {
+    display: flex;
+    gap: 60px;
+    margin-top: 30px;
+}
+
+.contact-info {
+    flex: 0 0 300px; /* 固定左側寬度 */
+}
+
+.info-item {
+    margin-bottom: 30px;
+}
+
+.info-item h3 {
+    color: #3B7D23;
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.info-item p {
+    font-size: 18px;
+}
+
+/* 在線諮詢表單樣式 (依照截圖) */
+.contact-form-box {
+    flex: 1;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form-box input, 
+.contact-form-box textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #001f3f; /* 深藍色框線 */
+    font-size: 24px;          /* 保持原定字體大小感 */
+    outline: none;
+    display: block;
+}
+
+.contact-form-box textarea {
+    resize: none;             /* 禁止使用者縮放高度 */
+}
+
+/* 送出訊息按鈕靠右排版 */
+.form-submit-row {
+    display: flex;
+    justify-content: flex-end; /* 將按鈕推向最右側 */
+    margin-top: 10px;
+}
+
+#submit-btn {
+    padding: 10px 30px;
+    background-color: transparent;
+    border: 2px solid #001f3f; /* 框線樣式按鈕 */
+    color: #000;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#submit-btn:hover {
+    background-color: #f0f0f0;
+}
+
+/* 手機版適配 */
+@media (max-width: 768px) {
+    .contact-wrapper {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .contact-info {
+        flex: none;
+    }
+}
