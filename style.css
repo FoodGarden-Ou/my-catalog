@@ -177,37 +177,38 @@ body {
 }
 
 /* ==========================================================================
-   聯絡我們頁面 (Contact Page) 整併樣式
+   聯絡我們頁面 (Contact Page) 最終版樣式
    ========================================================================== */
 
-/* 頁面主要容器 - 調整寬度使表單更精緻 */
-.content-container {
+/* 頁面主要容器 - 限制寬度讓表單置中 */
+.contact-main-container {
     max-width: 800px; 
     margin: 40px auto;
     padding: 0 20px;
+    text-align: left; /* 確保內容靠左對齊 */
 }
 
-/* 聯絡資訊與表單區塊間距 */
-.contact-section {
-    margin-bottom: 40px;
-}
-
-.section-title {
+/* 區塊標題樣式 (聯絡資訊、在線諮詢) */
+.contact-section-header {
     font-size: 24px;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 25px; /* 增加與內容的距離 */
     color: #000;
 }
 
-/* 左側/上方：資訊內容樣式 */
-.info-content p {
-    font-size: 18px;
-    margin-bottom: 12px;
-    color: #333;
+/* 聯絡資訊內容 */
+.contact-info-text {
+    margin-bottom: 45px; /* 增加聯絡資訊與表單區塊的間距 */
 }
 
-/* 右側/下方：表單輸入框樣式 (依照截圖：全寬、黑框) */
-.form-group {
+.contact-info-text p {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #000;
+}
+
+/* 表單輸入框樣式 (細黑框樣式) */
+.contact-form-group {
     margin-bottom: 15px;
 }
 
@@ -215,65 +216,62 @@ body {
 #contact-form textarea {
     width: 100%;
     padding: 12px;
-    border: 1px solid #000; /* 統一使用黑色細邊框 */
+    border: 1px solid #000; /* 對應截圖中的黑色細框 */
     font-size: 18px;
-    font-family: inherit;
+    font-family: "Microsoft JhengHei", sans-serif;
     outline: none;
     display: block;
     background-color: #fff;
-    transition: border-color 0.2s;
 }
 
 #contact-form textarea {
-    resize: none; /* 禁止手動調整大小，維持美觀 */
+    resize: none; /* 固定高度，不讓使用者拉動 */
+    min-height: 250px; /* 增加輸入框高度，符合截圖比例 */
 }
 
+/* 輸入框聚焦效果 */
 #contact-form input:focus,
 #contact-form textarea:focus {
-    border-color: #3B7D23; /* 聚焦時顯示品牌綠色 */
+    border-width: 1.5px; /* 稍微加粗代表選中 */
 }
 
-/* 送出訊息按鈕排版：靠右、灰色背景、黑框 */
-.form-submit-row {
+/* 按鈕容器：靠右對齊 */
+.form-action-row {
     display: flex;
     justify-content: flex-end;
     margin-top: 15px;
 }
 
+/* 送出訊息按鈕 (灰色背景 + 黑框) */
 #submit-btn {
-    padding: 8px 35px;
+    padding: 8px 40px;
     background-color: #d3d3d3; /* 灰色背景 */
     border: 1px solid #000;    /* 黑色邊框 */
     color: #000;
     font-size: 18px;
-    font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background-color 0.2s;
 }
 
 #submit-btn:hover {
-    background-color: #c0c0c0;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    background-color: #c0c0c0; /* 滑過時稍微變深 */
 }
 
-/* 手機版響應式適配 (Media Query) */
+/* ==========================================================================
+   手機版響應式修正
+   ========================================================================== */
 @media (max-width: 768px) {
-    .content-container {
-        padding: 0 15px;
+    .contact-main-container {
         margin: 20px auto;
+        padding: 0 15px;
     }
 
-    .section-title {
+    .contact-section-header {
         font-size: 22px;
     }
 
-    #contact-form input,
-    #contact-form textarea {
-        font-size: 16px; /* 手機版字體略小，避免輸入時頁面跳動 */
-    }
-
     #submit-btn {
-        width: 100%; /* 手機版按鈕撐滿，方便點擊 */
+        width: 100%; /* 手機版按鈕撐滿，方便按壓 */
         text-align: center;
     }
 }
