@@ -1,22 +1,56 @@
-<main class="content-container">
-    <h1 class="main-category-title">聯絡我們</h1>
-    <div class="green-line"></div>
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聯絡我們</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // 載入頁首 title.html
+        fetch('title.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+                // 載入後執行原本的下拉選單 JS
+                if (typeof initDropdown === "function") initDropdown();
+            });
+    </script>
+</head>
+<body>
 
-    <div class="contact-wrapper">
-        <div class="contact-info">
-            <div class="info-item">
-                <h3>電話</h3>
-                <p>02-xxxx-xxxx</p>
+    <div id="header-placeholder"></div>
+
+    <main class="content-container">
+        <h1 class="main-category-title">聯絡我們</h1>
+        <div class="green-line"></div>
+
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <div class="info-item">
+                    <h3>電話</h3>
+                    <p>02-xxxx-xxxx</p>
+                </div>
+            </div>
+
+            <div class="contact-form-box">
+                <form id="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="您的姓名" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="電子郵件" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" rows="8" placeholder="輸入問題或需求" required></textarea>
+                    </div>
+                    <div class="form-submit-row">
+                        <button type="submit" id="submit-btn">送出訊息</button>
+                    </div>
+                </form>
+            </div>
         </div>
+    </main>
 
-        <div class="contact-form-box">
-            <h3>在線諮詢</h3>
-            <form id="contact-form">
-                <input type="text" id="name" placeholder="您的姓名" required>
-                <input type="email" id="email" placeholder="電子郵件" required>
-                <textarea id="message" rows="5" placeholder="請輸入您的需求或問題..." required></textarea>
-                <button type="submit" id="submit-btn">送出訊息</button>
-            </form>
-            <div id="form-status"></div> </div>
-    </div>
-</main>
+    <script src="script.js"></script>
+</body>
+</html>
