@@ -3,16 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>聯絡我們</title>
+    <title>聯絡我們 - 馥園貿易</title>
     <link rel="stylesheet" href="style.css">
     <script>
-        // 載入頁首 title.html
+        // 載入導覽列
         fetch('title.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('header-placeholder').innerHTML = data;
-                // 載入後執行原本的下拉選單 JS
-                if (typeof initDropdown === "function") initDropdown();
             });
     </script>
 </head>
@@ -20,37 +18,37 @@
 
     <div id="header-placeholder"></div>
 
+    <div class="product-hero-bg">
+        圖片
+    </div>
+
     <main class="content-container">
-        <h1 class="main-category-title">聯絡我們</h1>
-        <div class="green-line"></div>
+        <div class="contact-section">
+            <h2 class="section-title">聯絡資訊</h2>
+            <div class="info-content">
+                <p>地址：xx市xx區xx路xx號</p>
+                <p>電話：02-xxxx-xxxx</p>
+            </div>
+        </div>
 
-        <div class="contact-wrapper">
-            <div class="contact-info">
-                <div class="info-item">
-                    <h3>電話</h3>
-                    <p>02-xxxx-xxxx</p>
+        <div class="contact-section">
+            <h2 class="section-title">在線諮詢</h2>
+            <form id="contact-form">
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="您的姓名" required>
                 </div>
-            </div>
-
-            <div class="contact-form-box">
-                <form id="contact-form">
-                    <div class="form-group">
-                        <input type="text" id="name" placeholder="您的姓名" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" placeholder="電子郵件" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" rows="8" placeholder="輸入問題或需求" required></textarea>
-                    </div>
-                    <div class="form-submit-row">
-                        <button type="submit" id="submit-btn">送出訊息</button>
-                    </div>
-                </form>
-            </div>
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="電子郵件" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" rows="8" placeholder="輸入您的需求或問題..." required></textarea>
+                </div>
+                <div class="form-submit-row">
+                    <button type="submit" id="submit-btn">送出訊息</button>
+                </div>
+            </form>
         </div>
     </main>
 
-    <script src="script.js"></script>
 </body>
 </html>
