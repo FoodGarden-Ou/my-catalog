@@ -177,28 +177,35 @@ body {
 }
 
 /* ==========================================================================
-   聯絡我們頁面 (Contact Page) 最終版樣式
+   聯絡我們頁面 (Contact Page) 最終修正版樣式
    ========================================================================== */
 
-/* 頁面主要容器 - 限制寬度讓表單置中 */
+/* 頁面主要容器 */
 .contact-main-container {
     max-width: 800px; 
     margin: 40px auto;
     padding: 0 20px;
-    text-align: left; /* 確保內容靠左對齊 */
+    text-align: left;
 }
 
-/* 區塊標題樣式 (聯絡資訊、在線諮詢) */
+/* 區塊標題樣式 */
 .contact-section-header {
     font-size: 24px;
     font-weight: bold;
-    margin-bottom: 25px; /* 增加與內容的距離 */
     color: #000;
+    /* 移除原本的 margin-bottom，改用下方 info-content 的 margin-top 來精確控制 */
+    margin-bottom: 0; 
 }
 
-/* 聯絡資訊內容 */
+/* 聯絡資訊內容容器 */
 .contact-info-text {
-    margin-bottom: 45px; /* 增加聯絡資訊與表單區塊的間距 */
+    /* 電話與下方「在線諮詢」的間距放大 (2倍間距感) */
+    margin-bottom: 3.5em; 
+}
+
+.contact-info-text .info-content {
+    /* 聯絡資訊標題(聯絡資訊)與地址之間的間距 (1.5倍間距感) */
+    margin-top: 1.5em; 
 }
 
 .contact-info-text p {
@@ -207,16 +214,17 @@ body {
     color: #000;
 }
 
-/* 表單輸入框樣式 (細黑框樣式) */
+/* 表單輸入框樣式 */
 .contact-form-group {
-    margin-bottom: 15px;
+    /* 輸入方框之間的間距設定為 12pt */
+    margin-bottom: 12pt; 
 }
 
 #contact-form input,
 #contact-form textarea {
     width: 100%;
     padding: 12px;
-    border: 1px solid #000; /* 對應截圖中的黑色細框 */
+    border: 1px solid #000;
     font-size: 18px;
     font-family: "Microsoft JhengHei", sans-serif;
     outline: none;
@@ -225,36 +233,37 @@ body {
 }
 
 #contact-form textarea {
-    resize: none; /* 固定高度，不讓使用者拉動 */
-    min-height: 250px; /* 增加輸入框高度，符合截圖比例 */
+    resize: none;
+    min-height: 250px;
 }
 
-/* 輸入框聚焦效果 */
 #contact-form input:focus,
 #contact-form textarea:focus {
-    border-width: 1.5px; /* 稍微加粗代表選中 */
+    border-width: 1.5px;
 }
 
 /* 按鈕容器：靠右對齊 */
 .form-action-row {
     display: flex;
     justify-content: flex-end;
-    margin-top: 15px;
+    /* 方框與送出訊息按鈕的間距設定為 12pt */
+    margin-top: 12pt; 
 }
 
-/* 送出訊息按鈕 (灰色背景 + 黑框) */
+/* 送出訊息按鈕 (方框變小、置右) */
 #submit-btn {
-    padding: 8px 40px;
-    background-color: #d3d3d3; /* 灰色背景 */
-    border: 1px solid #000;    /* 黑色邊框 */
+    /* 縮小 padding 讓按鈕方框變小 */
+    padding: 6px 25px; 
+    background-color: #d3d3d3;
+    border: 1px solid #000;
     color: #000;
-    font-size: 18px;
+    font-size: 16px; /* 稍微縮小字體讓按鈕更精緻 */
     cursor: pointer;
     transition: background-color 0.2s;
 }
 
 #submit-btn:hover {
-    background-color: #c0c0c0; /* 滑過時稍微變深 */
+    background-color: #c0c0c0;
 }
 
 /* ==========================================================================
@@ -271,7 +280,7 @@ body {
     }
 
     #submit-btn {
-        width: 100%; /* 手機版按鈕撐滿，方便按壓 */
-        text-align: center;
+        /* 手機版維持小方框並靠右，不再強制撐滿 */
+        width: auto; 
     }
 }
